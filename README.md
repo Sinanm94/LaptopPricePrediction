@@ -9,15 +9,12 @@ Check for missing values and analyze basic statistics.
 Encode categorical variables using Label Encoding.
 Assess multicollinearity through Variance Inflation Factor (VIF) calculations.
 Drop unnecessary columns to enhance model efficiency.
-```from sklearn import preprocessing
-    from statsmodels.stats.outliers_influence import variance_inflation_factor
-    
-    label_encoder = preprocessing.LabelEncoder()
-    df['Manufacturer'] = label_encoder.fit_transform(df['Manufacturer'])
-    
-    variables = df[['Manufacturer', 'IntelCore(i-)', 'IntelCoreGen', 'processing speed(GHz)', 'Ram(gb)', 'HDD(gb)', 'SSD(gb)', 'Graphics(gb)', 'ScreenSize(inch)']]
-    
-    ### Calculate variance inflation factor (VIF)
+            ```from sklearn import preprocessing
+                from statsmodels.stats.outliers_influence import variance_inflation_factor
+                   label_encoder = preprocessing.LabelEncoder()
+                    df['Manufacturer'] = label_encoder.fit_transform(df['Manufacturer'])
+                    variables = df[['Manufacturer', 'IntelCore(i-)', 'IntelCoreGen', 'processing speed(GHz)', 'Ram(gb)', 'HDD(gb)', 'SSD(gb)', 'Graphics(gb)', 'ScreenSize(inch)']]
+### Calculate variance inflation factor (VIF)
     vif = pd.DataFrame()
     vif['VIF'] = [variance_inflation_factor(variables.values, i) for i in range(variables.shape[1])]
     vif['Features'] = variables.columns
